@@ -10,7 +10,7 @@ As of March 2022, the median home value in Ames, Iowa is 286,826 dollars. The me
 
 The city of Ames is interested in identifying ways in which they and their residents can do their part to help increase the city’s median home value in spite of the continuing post COVID-19 economic effects.
 
-This project aims to identify specific housing features that have a high impact on a home’s value, so that the city knows what to consider when building new housing and residents know what to consider when building, updating or selling their home. 
+This project aims to identify specific housing features that have a high impact on a home’s value using a machine learning lasso regression model, so that the city knows what to consider when building new housing and residents know what to consider when building, updating or selling their home. 
 
 
 ### Background
@@ -25,7 +25,9 @@ According to historical rates of home appreciation, the universal 'normal' rate 
 |**March 2021**|249k|+4.2%|
 |**March 2022**|289k|+15.1%|
 
-The city has mostly fallen within the 2-4% range. The 2 exceptions are in 2019, due to the housing crash that began in the summer of 2018, and in 2022, due to the post COVID-19 economic effects.
+The city has mostly fallen within the 2-4% range with the exceptions of 2019, due to the housing crash that began in the summer of 2018, and 2022, due to the post COVID-19 economic effects.
+
+Their 15.1% increase checks out with the nationwide 15.8% increase. Existing home sales have hit a 15 year high in 2021 because of the incredibly low interest rates and a low inventory of homes. The Federal Reserve Board is signaling there may be as many as four rate hikes, which will will change up the housing playing field.
 
 ---
 
@@ -130,9 +132,9 @@ Machine learning is the process of letting your machine use data to learn the re
 
 The model used in this analysis was a lasso regression model. It's a linear regression model that applies a penalty and shrinks predictor coefficients. Predictor coefficients describe the relationship between a predictor and the response, and lasso regression is helpful in identifying predictors by eliminating predictors. In cases such as this one, where there are an excess of features to consider, reducing the amount of predictors is beneficial, as it will allow the model to produce more accurate results.
 
-Through the use of LassoCV, an iterative process that returns the optimal alpha penalty term, the optimal alpha was found to be ~46.4158. This alpha returned a cross validation score of ~0.8384, which describes the baseline amount of variability that can be explained when applied to a new dataset.
+Through the use of LassoCV, an iterative process that returns the optimal alpha penalty term, the optimal alpha of ~46.4158 was found and applied to this analysis.
 
-The R2 scores, which also describes the amount of variability that can be explained, on the training and validation data were ~0.9356 and ~0.9274, respectively, meaning that the model performed better than expected and is a reasonable model to use for this analysis.
+This alpha returned R2 scores of ~0.9356 and ~0.9274, on the training and validation data, respectively. THese scores describe the amount of variability that can be explained with a new dataset, making it a reasonable model to use for this analysis.
 
 ---
 
@@ -140,7 +142,7 @@ The R2 scores, which also describes the amount of variability that can be explai
 
 ### Home Sale Price Distribution
 
-The distribution of the home sale prices in Ames, IA from 2006-2011 is right skewed, with most home sale prices falling right below the 200,000 dollar mark. 
+The distribution of the home sale prices in Ames, IA from 2006-2011 is right skewed, with most home sale prices falling right below the 200,000 dollar mark, but they do range from below 100,000-600,000 dollars. Given that removing outliers would severely limit the observations for this analysis, I opted to keep them all.
 
 
 ### Neighborhood Impact on Home Sale Price
@@ -199,7 +201,7 @@ The following housing features should also be considered:
    * Good Garage Quality
    * Brick Face Exterior House Covering
    * Second Floor Square Footage
-   * Avoiding unnecessary luxury features (elevator, 2 types of garages)
+   * Avoiding unnecessary luxury features (elevator)
 
 
 ### Next Steps
