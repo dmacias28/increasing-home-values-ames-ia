@@ -1,4 +1,4 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project 1: The State of California - ACT & SAT Performance Analysis
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project 2: Increasing the Home Value in Ames, IA
 
 ---
 
@@ -6,104 +6,204 @@
 
 ### Problem Statement
 
-In 2018-2019, the state of California had 76 high school districts and 344 unified school districts. This project aims to provide an overview of California's standardized test performance and identify the state’s worst-performing counties, districts and subjects. This will allow the state to better understand their academic performance and see where additional resources are required.
+As of March 2022, the median home value in Ames, Iowa is 286,826 dollars. The median home value has not seen much consistency with year over year percent changes  in the past 5 years due to the housing crash in 2018-2019 and post COVID-19 economic effects in 2021-2022.
+
+The city of Ames is interested in identifying ways in which they and their residents can do their part to help increase the city’s median home value in spite of the continuing post COVID-19 economic effects.
+
+This project aims to identify specific housing features that have a high impact on a home’s value, so that the city knows what to consider when building new housing and residents know what to consider when building, updating or selling their home. 
+
 
 ### Background
 
-The SAT and ACT are standardized tests that many colleges and universities in the United States require as part of their admissions process. The test scores are used along with other materials such as grade point average (GPA) and essay responses to determine whether or not the applicant will be granted admission.
+According to historical rates of home appreciation, the universal 'normal' rate of appreciation for the housing market is between 3-5%.  According to Zillow, the Ames, IA median home values for the past 5 years are as follows:
 
-The ACT has four sections: English, Math, Reading, and Science, with an additional optional writing section. The composite benchmark score is 21.
+|**Month/Year**|**Median Home Value**|**Percent Change**|
+|---|---|---|
+|**March 2018**|234k|+4.0%|
+|**March 2019**|234k|+0.0%|
+|**March 2020**|239k|+2.1%|
+|**March 2021**|249k|+4.2%|
+|**March 2022**|289k|+15.1%|
 
-The SAT has two sections: Evidence-Based Reading and Writing and Math. Both sections have scores ranging from 200 to 800, with a total possible combined score of 1,600. For grade 12, the Evidence-Based Reading and Writing section benchmark score is 480, and the Math section benchmark score is 530.
-
-Since the 1940's, an increasing number of colleges have been using these standardized test scores as a measure for college readiness and aptitude. However, in recent years, it's been questioned as to whether or not it accurately reflects a student's potential, and whether or not using them is fair, given that a student's performance largely depends on the quality of education and resources made available to them through the education system.
-
-As a result, higher education schools are beginning to drop the ACT/SAT requirement on their applications, but these tests are maintaining their presence. Therefore, secondary education systems must continue their efforts in providing the necessary resources to prepare their students for these standardized tests.
+The city has mostly fallen within the 2-4% range. The 2 exceptions are in 2019, due to the housing crash that began in the summer of 2018, and in 2022, due to the post COVID-19 economic effects.
 
 ---
 
 ## Data
 
-### Datasets
+### Dataset
 
-[`act_2019_ca.csv`](./data/act_2019_ca.csv): 2019 ACT Scores in California by School
-   * This dataset contains the average scores by test section (English, Reading, Math and Science) and the percentage of test taskers whose composite scores were greater or equal to 21 for the test administration year 2018-19. This information is according to school, for which  the district and county name are noted, if available.
+The Ames, IA housing data set was obtained directly from the Ames Assessor’s Office. It contains 81 columns which include 22 nominal, 23 ordinal, 14 discrete, and 20 continuous variables (and 2 additional observation identifiers).
 
-[`sat_2019_ca.csv`](./data/sat_2019_ca.csv): 2019 SAT Scores in California by School
-   * This dataset contains the percent of students who met or exceeded the benchmark for Evidence-Based Reading & Writing and Math, both individually and together, the test administration year 2018-19. This information is according to school, for which  the district and county name are noted, if available.
 
 ### Data Dictionary
 
-|**Feature**|**Type**|**Dataset**|**Description**|
-|---|---|---|---|
-|**county_district_school code**|*float*|ACT/SAT|The County/District/School code.| 
-|**county_code**|*float*|ACT/SAT|The county code.| 
-|**district_code**|*float*|ACT/SAT|The district code.| 
-|**school_code**|*float*|ACT/SAT|The district code.|
-|**record_type**|*object*|ACT/SAT|The record type: C=County, D=District, S=School, X=State| 
-|**district_name**|*object*|ACT/SAT|The district name.| 
-|**county_name**|*object*|ACT/SAT|The county name.| 
-|**school_name**|*object*|ACT/SAT|The school name.|
-|**grade_12_enrollment**|*float*|ACT/SAT|The enrollment of grade 12.| 
-|**total_num_test_takers**|*float*|ACT/SAT|The number of test takers.| 
-|**avg_reading**|*float*|ACT|Average ACT Reading score.|
-|**avg_english**|*float*|ACT|Average ACT English score.|
-|**avg_math**|*float*|ACT|Average ACT Math score.|
-|**avg_science**|*float*|ACT|Average ACT Science score.|
-|**num_test_takers_21**|*float*|ACT|The number of test takers whose ACT Composite Scores are greater or equal to 21.| 
-|**pct_test_takers_21**|*float*|ACT| The percent of test takers whose ACT Composite Scores are greater or equal to 21.| 
-|**num_erw_benchmark**|*float*|SAT|The number of students who met or exceeded the benchmark for Evidence-Based Reading & Writing (ERW) test for Grade 12.
-|**pct_erw_benchmark**|*float*|SAT|The percent of students who met or exceeded the benchmark for Evidence-Based Reading & Writing (ERW) test for Grade 12.
-|**num_math_benchmark**|*float*|SAT|The number of students who met or exceeded the benchmark for the SAT Math test for Grade 12.
-|**pct_math_benchmark**|*float*|SAT|The percent of students who met or exceeded the benchmark for the SAT Math test for Grade 12.
-|**num_test_takers_benchmark**|*float*|SAT|The total number of students who met the benchmark of both Evidence-Based Reading & Writing (ERW) and Math Grade 12.| 
-|**pct_test_takers_benchmark**|*float*|SAT|The percent of students who met the benchmark of both Evidence-Based Reading & Writing (ERW) and Math Grade 12.| 
-|**year**|*object*|ACT/SAT|The test administration year.| 
-
-### Definitions
-
-   * **Overall:** All schools with recorded test data
-
-   * **Worst-Performing:** Schools where less than 10% of students met or exceeded the benchmark score
-
-   * **Benchmark Student:** Students who met or exceeded the benchmark score
+|**Feature**|**Data Type**|**Description**|
+|---|---|---|
+|**Id**|*int*|Identification number.|
+|**PID**|*int*|Parcel identification number - can be used with city web site for parcel review.|
+|**MS SubClass**|*Nominal - int*|Identifies the type of dwelling involved in the sale.|
+|**MS Zoning**|*Nominal - object*|Identifies the general zoning classification of the sale.|
+|**Lot Frontage**|*Continuous - float*|Linear feet of street connected to property.|
+|**Lot Area**|*Continuous - float*|Lot size in square feet.|
+|**Street**|*Nominal - object*|Type of road access to property.|
+|**Alley**|*Nominal - object*|Type of alley access to property.|
+|**Lot Shape**|*Ordinal - object*|General shape of property.|
+|**Land Contour**|*Nominal - object*|Flatness of the property.| 
+|**Utilities**|*Ordinal - object*|Type of utilities available.|
+|**Lot Config**|*Nominal - object*|Lot configuration.|
+|**Land Slope**|*Ordinal - object*|Slope of property.|
+|**Neighborhood**|*Nominal - object*|Physical locations within Ames city limits.|
+|**Condition 1**|*Nominal - object*|Proximity to various conditions.|
+|**Condition 2**|*Nominal - object*|Proximity to various conditions (if more than one is present).|
+|**Bldg Type**|*Nominal - object*|Type of dwelling.|
+|**House Style**|*Nominal - object*|Style of dwelling.|
+|**Overall Qual**|*Ordinal - int*|Rates the overall material and finish of the house.|
+|**Overall Cond**|*Ordinal - int*|Rates the overall condition of the house.|
+|**Year Built**|*Discrete - int*|Original construction date.|
+|**Year Remod/Add**|*Discrete - int*|Remodel date (same as construction date if no remodeling or additions).|
+|**Roof Style**|*Nominal - object*|Type of roof.|
+|**Roof Matl**|*Nominal - object*|Roof material.|
+|**Exterior 1**|*Nominal - object*|Exterior covering on house.|
+|**Exterior 2**|*Nominal - object*|Exterior covering on house (if more than one material).|
+|**Mas Vnr Type**|*Nominal - object*|Masonry veneer type.|
+|**Mas Vnr Area**|*Continuous - float*|Masonry veneer area.|
+|**Exter Qual**|*Ordinal - object*|Evaluates the quality of the material on the exterior.|
+|**Exter Cond**|*Ordinal - object*|Evaluates the present condition of the material on the exterior.|
+|**Foundation**|*Nominal - object*|Type of foundation.|
+|**Bsmt Qual**|*Ordinal - object*|Evaluates the height of the basement.|
+|**Bsmt Cond**|*Ordinal - object*|Evaluates the general condition of the basement.|
+|**Bsmt Exposure**|*Ordinal - object*|Refers to walkout or garden level walls.|
+|**BsmtFin Type 1**|*Ordinal - object*|Rating of basement finished area.|
+|**BsmtFin SF 1**|*Continuous - float*|Type 1 finished square feet.|
+|**BsmtFinType 2**|*Ordinal - object*|Rating of basement finished area (if multiple types).|
+|**BsmtFin SF 2**|*Continuous - float*|Type 2 finished square feet.|
+|**Bsmt Unf SF**|*Continuous - float*|Unfinished square feet of basement area.|
+|**Total Bsmt SF**|*Continuous - float*|Total square feet of basement area.|
+|**Heating**|*Nominal - object*|Type of heating.|
+|**HeatingQC**|*Ordinal - object*|Heating quality and condition.|
+|**Central Air**|*Nominal - object*|Central air conditioning.|
+|**Electrical**|*Ordinal - object*|Electrical system.|
+|**1st Flr SF**|*Continuous - int*|First floor square feet.|
+|**2nd Flr SF**|*Continuous - int*|Second floor square feet.|
+|**Low Qual Fin SF**|*Continuous - int*|Low quality finished square feet (all floors).|
+|**Gr Liv Area**|*Continuous - int*|Above grade (ground) living area square feet.|
+|**Bsmt Full Bath**|*Discrete - float*|Basement full bathrooms.|
+|**Bsmt Half Bath**|*Discrete - float*|Basement half bathrooms.|
+|**Full Bath**|*Discrete - int*|Full bathrooms above grade.|
+|**Half Bath**|*Discrete - int*|Half baths above grade.|
+|**Bedroom**|*Discrete - int*|Bedrooms above grade (does NOT include basement bedrooms).|
+|**Kitchen**|*Discrete - int*|Kitchens above grade.|
+|**KitchenQual**|*Ordinal - object*|Kitchen quality.|
+|**TotRmsAbvGrd**|*Discrete - int*|Total rooms above grade (does not include bathrooms).|
+|**Functional**|*Ordinal - object*|Home functionality (Assume typical unless deductions are warranted).|
+|**Fireplaces**|*Discrete - int*|Number of fireplaces.|
+|**FireplaceQu**|*Ordinal - object*|Fireplace quality.|
+|**Garage Type**|*Nominal - object*|Garage location.|
+|**Garage Yr Blt**|*Discrete - float*|Year garage was built.|
+|**Garage Finish**|*Ordinal - object*|Interior finish of the garage.|
+|**Garage Cars**|*Discrete - loat*|Size of garage in car capacity.|
+|**Garage Area**|*Continuous - float*|Size of garage in square feet.|
+|**Garage Qual**|*Ordinal - object*|Garage quality.|
+|**Garage Cond**|*Ordinal - object*|Garage condition.|
+|**Paved Drive**|*Ordinal - object*|Paved driveway.|
+|**Wood Deck SF**|*Continuous - int*|Wood deck area in square feet.|
+|**Open Porch SF**|*Continuous - int*|Open porch area in square feet.|
+|**Enclosed Porch**|*Continuous - int*|Enclosed porch area in square feet.|
+|**3-Ssn Porch**|*Continuous - int*|Three season porch area in square feet.|
+|**Screen Porch**|*Continuous - int*|Screen porch area in square feet.|
+|**Pool Area**|*Continuous - int*|Pool area in square feet.|
+|**Pool QC**|*Ordinal - object*|Pool quality.|
+|**Fence**|*Ordinal - object*|Fence quality.|
+|**Misc Feature**|*Nominal - object*|Miscellaneous feature not covered in other categories.|
+|**Misc Val**|*Continuous - int*|Value of miscellaneous feature.|
+|**Mo Sold**|*Discrete - int*|Month Sold (MM).|
+|**Yr Sold**|*Discrete - int*|Year Sold (YYYY).|
+|**Sale Type**|*Nominal - object*|Type of sale.|
+|**SalePrice**|*Continuous - object*|Sale price.|
 
 ---
 
-## Analysis
+## Methodology
 
-### ACT vs. SAT Performance by District
+Machine learning is the process of letting your machine use data to learn the relationship between predictors and responses. In this case, the predictors are the housing features and the responses are the sale prices.
 
-Between the ACT and SAT, the ACT had more districts with higher benchmark student percentages giving it more of a right-skew distribution, while the SAT held more of a symmetrical distribution with more districts concentrated in the middle percentiles.
+The model used in this analysis was a lasso regression model. It's a supervised, white-box, linear regression model that applies a penalty and shrinks predictor coefficients. Predictor coefficients describe the relationship between a predictor and the response, and lasso regression is helpful in identifying predictors by eliminating predictors. In cases such as this one, where there are an excess of features to consider, reducing the amount of predictors is beneficial, as it will allow the model to produce more accurate results.
 
-In the ACT dataset, there were 353 districts represented and 29 (8.22%) of those had schools with less than 10% benchmark students. In the SAT dataset, there were 406 districts represented and 38 (9.36%) of those had schools with less than 10% benchmark students.
+Through the use of LassoCV, an iterative process that returns the optimal alpha penalty term, the optimal alpha was found to be 46.4158883361278. This alpha returned a cross validation score of 0.838402361575566, which describes the baseline amount of variability that can be explained when applied to a new dataset.
 
-Between the ACT and SAT datasets, there were 52 distinct districts and there was a heavier concentration of these worst-performing districts in 3 counties: Los Angeles, Fresno and Riverside. Respectively, they claim 11, 6, and 6 worst-performing districts, and together they make up 44.23% of the worst-performing districts.
+The R2 scores, which also describes the amount of variability that can be explained, on the training and validation data were 0.9356412511488261 and 0.9274721464439819, respectively, meaning that the model performed better than expected and is a reasonable model to use for this analysis.
 
-### ACT vs. SAT Performance by Subject
+---
 
-The ACT dataset provided each school's average score by subject, through which the state's average score by subject was determined, and are as follows: Reading (22), English (21), Math (21) and Science (21). The worst-performing schools' averages are: Reading (16), English (14), Math (16) and Science (16).
+## Findings
 
-Based on these averages, there is no subject that can be considered worst-performing, either overall or at worst-performing schools.
+### Home Sale Price Distribution
 
-The SAT dataset provided each school's percent of students who met or exceeded the benchmark, through which the state's average percent of students who met or exceeded the benchmark was determined, and are as follows: Evidence-Based Reading & Writing (68%) and Math (46%). The worst-performing school's averages are: Evidence-Based Reading & Writing (27%) and Math (7%).
+The distribution of the home sale prices in Ames, IA from 2006-2011 is right skewed, with most home sale prices falling right below the 200,000 dollar mark. 
 
-Based on these averages, Math is the subject that is giving students significant difficulty, both overall and at worst-performing schools.
+
+### Neighborhood Impact on Home Sale Price
+
+With lasso regression, of the 28 neighborhoods in Ames, IA, 8 were assigned a positive coefficient, 12 were eliminated and 8 were assigned a negative coefficient.
+
+The top 5 neighborhoods that increase home value are:
+
+   * Green Hills by 75.2k
+   * Stone Brook by 42.3k
+   * Northridge by 27.0k
+   * Northridge Heights by 23.5k
+   * Crawford by 12.1k
+
+The bottom 5 neighborhoods that decrease home value are:
+
+   * Edwards by 8.9k
+   * Gilbert by 4.1k
+   * Northwest Ames by 3.9k
+   * Old Town by 3.0k
+   * North Ames by 2.9k
+
+
+### Home Feature Impact on Home Sale Price
+
+The top 5 home features that increase home value are:
+
+   * Roof Material - Wood Shingle by 40.7k
+   * Exterior Material Quality - Excellent by 31.5k
+   * Kitchen Quality - Excellent by 18.9k
+   * Proximity to a park/greenbelt by 14k
+   * Garage Quality - Good by 14k
+
+The bottom 5 home features that decrease home value are:
+
+   * Roof Material - Clay or Tile by 498.2k
+   * Elevator by 345.2k
+   * Court Officer Deed/Estate Sale Type by 12.7k
+   * Roof Style - Mansard by 12.5k
+   * Masonry Veneer Type - Brick Common by 10.9k
 
 ---
 
 ## Conclusion
 
-### Key Takeaways
-
-The State of California has 52 districts where less than 10% of students met or exceeded the benchmark score for the ACT and/or SAT. There is a heavy concentration of these districts in the Los Angeles, Fresno and Riverside counties.
-
-The ACT does not have a subject that can be considered worst-performing, but the SAT Math section is giving students significant difficulty.
 
 ### Recommendations
 
-With 52 worst-performing districts, the State of California has some significant academic improvements to consider. To start, focusing on the districts in the top 3 counties with the most amount of worst-performing districts (Los Angeles, Fresno and Riverside), will have the highest impact as they make up 44.23% of the worst-performing districts. These counties/districts will require a higher quality of instruction and delivery style with an emphasis on Math.
+It's recommended that the city of Ames, IA invest in housing in the Green Hills, Stone Brook, Northridge, Northridge Heights and Crawford neighborhoods, and invest in more parks and green spaces.
+
+The following housing features should also be considered:
+
+   * Wood Shingle Roofing (and avoid Clay, Tile or a Mansard style)
+   * Excellent Exterior Material Quality (and avoid  Common Brick)
+   * Excellent Kitchen Quality
+   * Good Garage Quality
+   * Brick Face Exterior House Covering
+   * Second Floor Square Footage
+   * Avoiding unnecessary luxury features (elevator, 2 garages)
+
 
 ### Next Steps
 
-A separate analysis will be beneficial to assess the current quality of instruction and delivery style at these worst-performing districts. This will be to determine what exactly needs to be implemented and/or changed so that the state can make an efficient use of its resources. 
+It will be beneficial to gain a deeper understanding of how each rating is defined, if not already stated, for those categorical features that were ordinal. For example, the difference between average, god, excellent, etc. 
+
+Also, given that the dataset of this analysis only contained observations ranging from 2006-2011, a follow-up analysis on an updated dataset is suggested to see if the findings of this analysis continue to hold true.

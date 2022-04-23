@@ -51,7 +51,7 @@ The Ames, IA housing data set was obtained directly from the Ames Assessor’s O
 |**Lot Shape**|*Ordinal - object*|General shape of property.|
 |**Land Contour**|*Nominal - object*|Flatness of the property.| 
 |**Utilities**|*Ordinal - object*|Type of utilities available.|
-|**Lot Config**|*Nominal - object*|ACT|Lot configuration.|
+|**Lot Config**|*Nominal - object*|Lot configuration.|
 |**Land Slope**|*Ordinal - object*|Slope of property.|
 |**Neighborhood**|*Nominal - object*|Physical locations within Ames city limits.|
 |**Condition 1**|*Nominal - object*|Proximity to various conditions.|
