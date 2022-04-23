@@ -39,7 +39,7 @@ The Ames, IA housing data set was obtained directly from the Ames Assessor’s O
 ### Data Dictionary
 
 |**Feature**|**Data Type**|**Description**|
-|---|---|---|---|
+|---|---|---|
 |**Id**|*int*|Identification number.|
 |**PID**|*int*|Parcel identification number - can be used with city web site for parcel review.|
 |**MS SubClass**|*Nominal - int*|Identifies the type of dwelling involved in the sale.|
