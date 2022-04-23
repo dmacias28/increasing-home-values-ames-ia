@@ -128,11 +128,11 @@ The Ames, IA housing data set was obtained directly from the Ames Assessor’s O
 
 Machine learning is the process of letting your machine use data to learn the relationship between predictors and responses. In this case, the predictors are the housing features and the responses are the sale prices.
 
-The model used in this analysis was a lasso regression model. It's a supervised, white-box, linear regression model that applies a penalty and shrinks predictor coefficients. Predictor coefficients describe the relationship between a predictor and the response, and lasso regression is helpful in identifying predictors by eliminating predictors. In cases such as this one, where there are an excess of features to consider, reducing the amount of predictors is beneficial, as it will allow the model to produce more accurate results.
+The model used in this analysis was a lasso regression model. It's a linear regression model that applies a penalty and shrinks predictor coefficients. Predictor coefficients describe the relationship between a predictor and the response, and lasso regression is helpful in identifying predictors by eliminating predictors. In cases such as this one, where there are an excess of features to consider, reducing the amount of predictors is beneficial, as it will allow the model to produce more accurate results.
 
-Through the use of LassoCV, an iterative process that returns the optimal alpha penalty term, the optimal alpha was found to be 46.4158883361278. This alpha returned a cross validation score of 0.838402361575566, which describes the baseline amount of variability that can be explained when applied to a new dataset.
+Through the use of LassoCV, an iterative process that returns the optimal alpha penalty term, the optimal alpha was found to be ~46.4158. This alpha returned a cross validation score of ~0.8384, which describes the baseline amount of variability that can be explained when applied to a new dataset.
 
-The R2 scores, which also describes the amount of variability that can be explained, on the training and validation data were 0.9356412511488261 and 0.9274721464439819, respectively, meaning that the model performed better than expected and is a reasonable model to use for this analysis.
+The R2 scores, which also describes the amount of variability that can be explained, on the training and validation data were ~0.9356 and ~0.9274, respectively, meaning that the model performed better than expected and is a reasonable model to use for this analysis.
 
 ---
 
@@ -145,7 +145,7 @@ The distribution of the home sale prices in Ames, IA from 2006-2011 is right ske
 
 ### Neighborhood Impact on Home Sale Price
 
-With lasso regression, of the 28 neighborhoods in Ames, IA, 8 were assigned a positive coefficient, 12 were eliminated and 8 were assigned a negative coefficient.
+Of the 28 neighborhoods in Ames, IA, 8 were assigned a positive coefficient, 12 were eliminated and 8 were assigned a negative coefficient.
 
 The top 5 neighborhoods that increase home value are:
 
@@ -199,7 +199,7 @@ The following housing features should also be considered:
    * Good Garage Quality
    * Brick Face Exterior House Covering
    * Second Floor Square Footage
-   * Avoiding unnecessary luxury features (elevator, 2 garages)
+   * Avoiding unnecessary luxury features (elevator, 2 types of garages)
 
 
 ### Next Steps
