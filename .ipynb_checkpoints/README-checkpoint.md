@@ -171,7 +171,7 @@ With a regression model in mind, I explored 4 model types:
 * Lasso Regression
 * ElasticNet Regression
 
-The R2 scores and RMSE metric were used to evaluate the performance of the models.
+The R2 score and RMSE metrics were used to evaluate the performance of the models.
 
 * An R2 score explains how much variability a model is able to explain. On a scale of 0 to 1, the higher the score, the better. And when comparing the train and validation R2 scores, if the validation R2 score is higher than the train R2 score, then the model is likely to do well when applied to unseen data. On the other hand, if the train R2 score is higher than the validation R2 score, then the model is in danger of being overfit, and will likely not do well when applied to unseen data.
 
